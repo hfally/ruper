@@ -123,9 +123,6 @@ class RegisterController extends Controller
             'name' => $request->name
         ];
 
-        // Register
-        $user = $this->create($data);
-
         event(new Registered($user = $this->create($request->all())));
 
         $this->guard()->login($user);
